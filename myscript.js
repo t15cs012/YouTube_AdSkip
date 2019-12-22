@@ -1,5 +1,5 @@
-// 全体のDOMの監視
-const observer_body = new MutationObserver(() => {
+// .ytp-ad-moduleのDOMの監視
+const observer_Ad_Module = new MutationObserver(() => {
     // 監視ターゲットの取得
     /*--- 動画広告 ---*/
     var button = document.getElementsByClassName('ytp-ad-skip-button-container')
@@ -26,7 +26,9 @@ const observer_body = new MutationObserver(() => {
 
 })
 
-observer_body.observe(document.body, {
+const ad_module = document.getElementsByClassName('ytp-ad-module')[0]
+
+observer_Ad_Module.observe(ad_module, {
     childList: true,
     subtree: true,
     attributes: true,
