@@ -26,11 +26,13 @@ const observer_Ad_Module = new MutationObserver(() => {
 
 })
 
-const ad_module = document.getElementsByClassName('ytp-ad-module')[0]
 
-observer_Ad_Module.observe(ad_module, {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ['style']
-});
+window.onload = () => {
+    const ad_module = document.getElementsByClassName('ytp-ad-module')[0]
+    observer_Ad_Module.observe(ad_module, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['style']
+    })
+};
