@@ -27,12 +27,17 @@ const observer_Ad_Module = new MutationObserver(() => {
 })
 
 
-window.onload = () => {
-    const ad_module = document.getElementsByClassName('ytp-ad-module')[0]
-    observer_Ad_Module.observe(ad_module, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['style']
-    })
-};
+// ytp-ad-moduleクラスが存在するまで探し続ける
+var timer = setInterval(() => {
+    var ad_modules = document.getElementsByClassName('ytp-ad-module')
+    if (ad_modules.length > 0) {
+        console.log("find ytp-ad-module")
+        clearInterval(timer)
+        observer_Ad_Module.observe(ad_modules[0], {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style']
+        })
+    }
+}, 500);
